@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": "bonFakeApp/src",
     "target": "es5",
     "lib": [
       "dom",
@@ -22,7 +22,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "src",
+    "bonFakeApp/src",
     "**/*"
   ]
 }
