@@ -1,18 +1,23 @@
-export class Money implements IMoney {
+import { Dollar } from './Dollar';
+
+export abstract class Money implements IMoney {
   constructor(protected amount: number = 0) {
     this.amount = amount;
   }
 
-  public equal(money: Money): boolean {
-    return money.amount === this.amount;
+  equal(money: Money): boolean {
+    return money.amount === this.amount && this.getClass() === money.getClass();
   }
 
-  public times(multiplier: number): Money {
-    return new Money(this.amount * multiplier);
+  static dollar(amount: number): Dollar {
+    return new Dollar(amount);
+  }
+  getClass(): string {
+    return this.constructor.name;
   }
 }
 
 interface IMoney {
   equal(money: Money): boolean;
-  times(multiplier: number): Money;
+  getClass(): string;
 }

@@ -12,4 +12,6 @@
 - [x] 5 € \* 2 = 10 €
 - [] Dollar/Euro duplication
 - [x] ~~Common equals~~
-- [x] ~~Common times~~
+- [] Common times
+- [] Currency?
+- [] Delete testFrancMultiplication?
