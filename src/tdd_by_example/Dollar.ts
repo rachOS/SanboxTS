@@ -1,12 +1,12 @@
-import { Money } from './Money';
+import Money from './Money';
 
-export class Dollar extends Money {
-  constructor(amount: number) {
-    super(amount);
-    this.amount = amount;
+class Dollar extends Money {
+  constructor(amount: number, currency: string) {
+    super(amount, currency);
   }
-
   times(multiplier: number): Dollar {
-    return new Dollar(this.amount * multiplier);
+    return Money.dollar(this.amount * multiplier, this.currency);
   }
 }
+
+export default Dollar;
