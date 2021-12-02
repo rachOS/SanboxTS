@@ -1,6 +1,6 @@
 // jest.config.ts
 import type { Config } from '@jest/types';
-import { defaults } from 'jest-config';
+//import { defaults } from 'jest-config';
 
 // Sync object
 const config: Config.InitialOptions = {
@@ -8,7 +8,7 @@ const config: Config.InitialOptions = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   moduleFileExtensions: [
-    ...defaults.moduleFileExtensions,
+    //...defaults.moduleFileExtensions,
     'ts',
     'tsx',
     'js',

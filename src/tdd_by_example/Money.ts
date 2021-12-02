@@ -1,33 +1,34 @@
-import Dollar from './Dollar';
-
-abstract class Money implements IMoney {
+class Money implements IMoney {
   constructor(protected amount: number = 0, protected currency: string = '') {
     this.amount = amount;
     this.currency = currency;
   }
 
-  equal(money: Money): boolean {
-    return money.amount === this.amount && this.getClass() === money.getClass();
+  static dollar(amount: number, currency: string = '$'): Money {
+    return new Money(amount, currency);
   }
 
-  static dollar(amount: number, currency: string = '$'): Dollar {
-    return new Dollar(amount, currency);
+  static euro(amount: number, currency: string = '€'): Money {
+    return new Money(amount, currency);
   }
 
-  // static euro(amount: number): Euro {
-  //   return new Euro(amount, '€');
-  // }
+  equal(object: object): boolean {
+    const money: Money = <Money>object;
+    return (
+      money.amount === this.amount && this.getCurrency() === money.getCurrency()
+    );
+  }
+  times(multiplier: number): Money {
+    return new Money(this.amount * multiplier, this.currency);
+  }
+
   getCurrency(): string {
     return this.currency;
-  }
-  getClass(): string {
-    return this.constructor.name;
   }
 }
 
 interface IMoney {
   equal(money: Money): boolean;
-  getClass(): string;
 }
 
 export default Money;
