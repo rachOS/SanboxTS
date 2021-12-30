@@ -18,8 +18,8 @@ describe('Mocked Class', () => {
     expect(mockDemo).toHaveBeenCalled();
 
     demo.displayMessage()
-    expect(mockDemo.prototype.displayMessage).toHaveBeenCalled();
 
+    expect(mockDemo.prototype.displayMessage).toHaveBeenCalled();
 
   });
 
