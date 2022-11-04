@@ -67,8 +67,8 @@ class Pizzaiolo {
     builder.addOlives(0);
   }
 
-  cookFourCheese(builder: IPizzaBuilder): void {
-    builder.setSauce('creme fraiche');
+  *cookFourCheese(builder: IPizzaBuilder) {
+    yield "done"
   }
 
 }
