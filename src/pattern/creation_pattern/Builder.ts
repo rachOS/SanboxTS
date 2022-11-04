@@ -14,24 +14,29 @@ interface IPizzaBuilder {
 }
 
 class Calzone {
-  name: string = 'calzone';
-  olives: number = 0;
+  infos: Map<string, any> = new Map();
+
 }
 
 class FourCheeze {
 }
 
 class CalzoneBuilder implements IPizzaBuilder {
+  private pizza: Calzone = new Calzone();
 
-  constructor(public pizza: Calzone = new Calzone()) {
+  constructor() {
     this.startNewPizza();
+  }
+
+  setName(): void {
+    this.pizza.infos.set('name', 'calzone');
   }
 
   setSize(size: 29 | 33): void {
   }
 
   addOlives(quantity: number = 0): void {
-    this.pizza.olives = quantity;
+    this.pizza.infos.set('olives', quantity);
   }
 
   setIngredient(ingredientList: Array<string>): void {
@@ -57,7 +62,8 @@ class CalzoneBuilder implements IPizzaBuilder {
 
 class Pizzaiolo {
 
-  cookCalzone(builder: CalzoneBuilder): void {
+  cookCalzone(builder: CalzoneBuilder): void { // todo replace by a generetor function
+    builder.setName();
     builder.addOlives(0);
   }
 
@@ -68,10 +74,12 @@ class Pizzaiolo {
 }
 
 const pizzaiolo = new Pizzaiolo();
-const calzoneBuilder = new CalzoneBuilder()
-pizzaiolo.cookCalzone(calzoneBuilder);
-const calzone = calzoneBuilder.getPizza()
-console.log("=>(Builder.ts:75) calzone", calzone);
+const calzoneBuilder = new CalzoneBuilder();
 
+pizzaiolo.cookCalzone(calzoneBuilder);
+
+const calzone = calzoneBuilder.getPizza();
+
+console.log('=>(Builder.ts:75) calzone', calzone);
 
 export {};
